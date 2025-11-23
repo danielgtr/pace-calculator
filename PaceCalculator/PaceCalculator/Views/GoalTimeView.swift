@@ -227,6 +227,33 @@ struct GoalTimeView: View {
                                 label: "Velocidad (mph)",
                                 value: String(format: "%.1f mph", result.speedMph)
                             )
+
+                            // Ver Splits Button
+                            NavigationLink(destination: RaceSplitsView(
+                                distance: distance,
+                                distanceUnit: distanceUnit,
+                                paceMinutes: result.paceMinutes,
+                                paceSeconds: result.paceSeconds,
+                                paceUnit: paceUnit
+                            )) {
+                                HStack {
+                                    Image(systemName: "list.number")
+                                    Text("Ver Splits de Carrera")
+                                        .fontWeight(.semibold)
+                                }
+                                .font(.subheadline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(
+                                    LinearGradient(
+                                        colors: [Color.blue, Color.purple],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .cornerRadius(12)
+                            }
                         }
                         .padding()
                         .background(

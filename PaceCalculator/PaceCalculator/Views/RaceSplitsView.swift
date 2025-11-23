@@ -2,101 +2,79 @@
 //  RaceSplitsView.swift
 //  PaceCalculator
 //
-//  View for calculating race splits
+//  View for calculating race splits (accessed from GoalTimeView)
 //
 
 import SwiftUI
 
 struct RaceSplitsView: View {
-    @State private var totalDistance: Double = 21.0975
-    @State private var distanceUnit: DistanceUnit = .km
-    @State private var splitInterval: Double = 1.0
-    @State private var paceMinutes: Int = 5
-    @State private var paceSeconds: Int = 0
-    @State private var paceUnit: PaceUnit = .minPerKm
+    // Data passed from GoalTimeView
+    let initialDistance: Double
+    let initialDistanceUnit: DistanceUnit
+    let initialPaceMinutes: Int
+    let initialPaceSeconds: Int
+    let initialPaceUnit: PaceUnit
+
+    @State private var totalDistance: Double
+    @State private var distanceUnit: DistanceUnit
+    @State private var splitInterval: Double
+    @State private var paceMinutes: Int
+    @State private var paceSeconds: Int
+    @State private var paceUnit: PaceUnit
     @State private var splits: [PaceCalculator.Split] = []
-    @State private var showingPresets = false
+    @State private var showingIntervalOptions = false
+    @Environment(\.dismiss) var dismiss
+
+    init(distance: Double, distanceUnit: DistanceUnit, paceMinutes: Int, paceSeconds: Int, paceUnit: PaceUnit) {
+        self.initialDistance = distance
+        self.initialDistanceUnit = distanceUnit
+        self.initialPaceMinutes = paceMinutes
+        self.initialPaceSeconds = paceSeconds
+        self.initialPaceUnit = paceUnit
+
+        // Initialize state with passed values
+        _totalDistance = State(initialValue: distance)
+        _distanceUnit = State(initialValue: distanceUnit)
+        _paceMinutes = State(initialValue: paceMinutes)
+        _paceSeconds = State(initialValue: paceSeconds)
+        _paceUnit = State(initialValue: paceUnit)
+
+        // Auto-set split interval based on distance unit (1 km or 1 mile)
+        _splitInterval = State(initialValue: 1.0)
+    }
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Info Banner
-                    HStack {
-                        Image(systemName: "info.circle.fill")
-                            .foregroundColor(.blue)
-                        Text("Calcula tus splits para carreras")
+        ScrollView {
+            VStack(spacing: 24) {
+                // Info Banner
+                HStack {
+                    Image(systemName: "info.circle.fill")
+                        .foregroundColor(.blue)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Splits de Carrera")
                             .font(.caption)
+                            .fontWeight(.semibold)
+                        Text("Intervalo automático: \(String(format: "%.0f", splitInterval)) \(distanceUnit.rawValue)")
+                            .font(.caption2)
                             .foregroundColor(.secondary)
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue.opacity(0.1))
-                    .cornerRadius(12)
-
-                    // Total Distance Section
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack {
-                            Text("Distancia total")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            Spacer()
-                            Button(action: { showingPresets.toggle() }) {
-                                Label("Carreras", systemImage: "flag.fill")
-                                    .font(.subheadline)
-                            }
-                        }
-
-                        HStack(spacing: 12) {
-                            TextField("Distancia", value: $totalDistance, format: .number)
-                                .keyboardType(.decimalPad)
-                                .textFieldStyle(.roundedBorder)
-                                .font(.title3)
-                                .multilineTextAlignment(.center)
-
-                            Picker("Unidad", selection: $distanceUnit) {
-                                Text("km").tag(DistanceUnit.km)
-                                Text("mi").tag(DistanceUnit.mile)
-                            }
-                            .pickerStyle(.segmented)
-                            .frame(width: 120)
-                        }
-
-                        // Race Presets
-                        if showingPresets {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 8) {
-                                    ForEach(CommonDistance.presets, id: \.name) { preset in
-                                        Button(action: {
-                                            totalDistance = distanceUnit == .km ? preset.km : preset.miles
-                                        }) {
-                                            VStack(spacing: 4) {
-                                                Text(preset.name)
-                                                    .font(.caption)
-                                                    .fontWeight(.semibold)
-                                                Text(distanceUnit == .km ?
-                                                     String(format: "%.1f km", preset.km) :
-                                                     String(format: "%.1f mi", preset.miles))
-                                                    .font(.caption2)
-                                                    .foregroundColor(.secondary)
-                                            }
-                                            .padding(.horizontal, 12)
-                                            .padding(.vertical, 8)
-                                            .background(Color.purple.opacity(0.2))
-                                            .cornerRadius(12)
-                                        }
-                                    }
-                                }
-                            }
-                            .transition(.scale.combined(with: .opacity))
-                        }
+                    Spacer()
+                    Button(action: { showingIntervalOptions.toggle() }) {
+                        Text(showingIntervalOptions ? "Ocultar" : "Cambiar intervalo")
+                            .font(.caption)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(Color.blue.opacity(0.2))
+                            .cornerRadius(8)
                     }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(16)
+                }
+                .padding()
+                .background(Color.blue.opacity(0.1))
+                .cornerRadius(12)
 
-                    // Split Interval Section
-                    VStack(alignment: .leading, spacing: 16) {
+                // Interval Options (collapsible)
+                if showingIntervalOptions {
+                    VStack(alignment: .leading, spacing: 12) {
                         Text("Intervalo de split")
                             .font(.headline)
                             .foregroundColor(.secondary)
@@ -107,151 +85,106 @@ struct RaceSplitsView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .font(.title3)
                                 .multilineTextAlignment(.center)
+                                .frame(width: 100)
 
                             Text(distanceUnit == .km ? "km" : "mi")
                                 .foregroundColor(.secondary)
-                                .frame(width: 40)
+
+                            Spacer()
                         }
 
-                        Text("Común: 1 km, 1 mi, o 5 km")
+                        Text("Común: 1, 5, o 10 \(distanceUnit.rawValue)")
                             .font(.caption)
                             .foregroundColor(.secondary)
+
+                        Button(action: calculateSplits) {
+                            Text("Recalcular")
+                                .font(.subheadline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 10)
+                                .background(Color.blue)
+                                .cornerRadius(8)
+                        }
                     }
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
+                    .transition(.scale.combined(with: .opacity))
+                }
 
-                    // Pace Section
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Pace objetivo")
-                            .font(.headline)
-                            .foregroundColor(.secondary)
-
-                        HStack(spacing: 16) {
-                            VStack {
-                                Text("Min")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                Picker("Minutos", selection: $paceMinutes) {
-                                    ForEach(0..<30) { min in
-                                        Text("\(min)").tag(min)
-                                    }
-                                }
-                                .pickerStyle(.wheel)
-                                .frame(height: 100)
-                                .clipped()
-                            }
-
-                            VStack {
-                                Text("Seg")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                Picker("Segundos", selection: $paceSeconds) {
-                                    ForEach(0..<60) { sec in
-                                        Text("\(sec)").tag(sec)
-                                    }
-                                }
-                                .pickerStyle(.wheel)
-                                .frame(height: 100)
-                                .clipped()
-                            }
-                        }
-
-                        Picker("Unidad de pace", selection: $paceUnit) {
-                            Text("min/km").tag(PaceUnit.minPerKm)
-                            Text("min/mi").tag(PaceUnit.minPerMile)
-                        }
-                        .pickerStyle(.segmented)
-
-                        Text("Pace en \(paceUnit.displayName)")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(16)
-
-                    // Calculate Button
-                    Button(action: calculateSplits) {
-                        Text("Calcular Splits")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(
-                                LinearGradient(
-                                    colors: [Color.purple, Color.blue],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .cornerRadius(12)
-                    }
-
-                    // Splits Results
-                    if !splits.isEmpty {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Splits de Carrera")
+                // Splits Results
+                if !splits.isEmpty {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Text("Splits")
                                 .font(.headline)
+                            Spacer()
+                            Text("\(splits.count) splits")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
 
-                            // Header
+                        // Header
+                        HStack {
+                            Text("Distancia")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text("Split")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .frame(width: 70, alignment: .center)
+                            Text("Acumulado")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .frame(width: 90, alignment: .trailing)
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                        .background(Color(.systemGray5))
+                        .cornerRadius(8)
+
+                        // Splits List
+                        ForEach(Array(splits.enumerated()), id: \.offset) { index, split in
                             HStack {
-                                Text("Distancia")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+                                Text(String(format: "%.1f %@",
+                                           split.distance,
+                                           distanceUnit == .km ? "km" : "mi"))
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("Split")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+                                Text(split.time)
+                                    .fontWeight(.medium)
                                     .frame(width: 70, alignment: .center)
-                                Text("Acumulado")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+                                Text(split.cumulativeTime)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.green)
                                     .frame(width: 90, alignment: .trailing)
                             }
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                            .background(Color(.systemGray5))
+                            .padding()
+                            .background(index % 2 == 0 ? Color(.systemGray6) : Color(.systemBackground))
                             .cornerRadius(8)
-
-                            // Splits List
-                            ForEach(Array(splits.enumerated()), id: \.offset) { index, split in
-                                HStack {
-                                    Text(String(format: "%.1f %@",
-                                               split.distance,
-                                               distanceUnit == .km ? "km" : "mi"))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    Text(split.time)
-                                        .fontWeight(.medium)
-                                        .frame(width: 70, alignment: .center)
-                                    Text(split.cumulativeTime)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.purple)
-                                        .frame(width: 90, alignment: .trailing)
-                                }
-                                .padding()
-                                .background(index % 2 == 0 ? Color(.systemGray6) : Color(.systemBackground))
-                                .cornerRadius(8)
-                            }
                         }
-                        .padding()
-                        .background(
-                            LinearGradient(
-                                colors: [Color.green.opacity(0.1), Color.blue.opacity(0.1)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .cornerRadius(16)
-                        .transition(.scale.combined(with: .opacity))
                     }
-
-                    Spacer()
+                    .padding()
+                    .background(
+                        LinearGradient(
+                            colors: [Color.green.opacity(0.1), Color.blue.opacity(0.1)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .cornerRadius(16)
                 }
-                .padding()
+
+                Spacer()
             }
-            .navigationTitle("Splits de Carrera")
-            .navigationBarTitleDisplayMode(.large)
+            .padding()
+        }
+        .navigationTitle("Splits de Carrera")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            // Calculate splits automatically when view appears
+            calculateSplits()
         }
     }
 
@@ -270,5 +203,13 @@ struct RaceSplitsView: View {
 }
 
 #Preview {
-    RaceSplitsView()
+    NavigationView {
+        RaceSplitsView(
+            distance: 42.195,
+            distanceUnit: .km,
+            paceMinutes: 5,
+            paceSeconds: 41,
+            paceUnit: .minPerKm
+        )
+    }
 }

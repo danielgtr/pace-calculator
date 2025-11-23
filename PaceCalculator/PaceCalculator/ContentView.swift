@@ -24,11 +24,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("Tiempo Meta", systemImage: "target")
                 }
-
-            RaceSplitsView()
-                .tabItem {
-                    Label("Splits", systemImage: "list.number")
-                }
         }
         .accentColor(.purple)
     }
