@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var settings: AppSettings
+
+    var strings: LocalizedStrings {
+        LocalizedStrings(language: settings.language)
+    }
+
     var body: some View {
         TabView {
             PaceConverterView()
                 .tabItem {
-                    Label("Converter", systemImage: "arrow.left.arrow.right")
+                    Label(strings.tabConverter, systemImage: "arrow.left.arrow.right")
                 }
 
             GoalTimeView()
                 .tabItem {
-                    Label("Goal Time", systemImage: "target")
+                    Label(strings.tabGoalTime, systemImage: "target")
+                }
+
+            SettingsView()
+                .tabItem {
+                    Label(strings.settings, systemImage: "gearshape")
                 }
         }
         .accentColor(.purple)
@@ -26,4 +37,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(AppSettings())
 }

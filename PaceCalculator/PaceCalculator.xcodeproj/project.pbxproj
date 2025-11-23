@@ -15,6 +15,8 @@
 		3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */; };
 		3B5F1A1824B8F1D000E2D8A7 /* GoalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */; };
 		3B5F1A3124B8F1E000E2D8A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5F1A3024B8F1E000E2D8A8 /* Assets.xcassets */; };
+		3B5F1A4024B8F2A000E2D8B0 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A3F24B8F2A000E2D8AF /* AppSettings.swift */; };
+		3B5F1A4224B8F2A000E2D8B2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A4124B8F2A000E2D8B1 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimeView.swift; sourceTree = "<group>"; };
 		3B5F1A2024B8F1E000E2D8A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B5F1A3024B8F1E000E2D8A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B5F1A3F24B8F2A000E2D8AF /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		3B5F1A4124B8F2A000E2D8B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				3B5F1A0F24B8F1D000E2D8A3 /* PaceCalculator.swift */,
+				3B5F1A3F24B8F2A000E2D8AF /* AppSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,6 +90,7 @@
 				3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */,
 				3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */,
 				3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */,
+				3B5F1A4124B8F2A000E2D8B1 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +171,8 @@
 				3B5F1A1424B8F1D000E2D8A5 /* RunCalculatorView.swift in Sources */,
 				3B5F1A1824B8F1D000E2D8A7 /* GoalTimeView.swift in Sources */,
 				3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */,
+				3B5F1A4024B8F2A000E2D8B0 /* AppSettings.swift in Sources */,
+				3B5F1A4224B8F2A000E2D8B2 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
