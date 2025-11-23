@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A001001 /* PaceCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001000 /* PaceCalculatorApp.swift */; };
-		7A001003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001002 /* ContentView.swift */; };
-		7A001010 /* PaceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A00100F /* PaceCalculator.swift */; };
-		7A001012 /* PaceConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001011 /* PaceConverterView.swift */; };
-		7A001014 /* RunCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001013 /* RunCalculatorView.swift */; };
-		7A001016 /* RaceSplitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001015 /* RaceSplitsView.swift */; };
+		3B5F1A0124B8F1C000E2D8A1 /* PaceCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A0024B8F1C000E2D8A1 /* PaceCalculatorApp.swift */; };
+		3B5F1A0324B8F1C000E2D8A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A0224B8F1C000E2D8A2 /* ContentView.swift */; };
+		3B5F1A1024B8F1D000E2D8A3 /* PaceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A0F24B8F1D000E2D8A3 /* PaceCalculator.swift */; };
+		3B5F1A1224B8F1D000E2D8A4 /* PaceConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */; };
+		3B5F1A1424B8F1D000E2D8A5 /* RunCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */; };
+		3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A001000 /* PaceCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculatorApp.swift; sourceTree = "<group>"; };
-		7A001002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7A00100F /* PaceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculator.swift; sourceTree = "<group>"; };
-		7A001011 /* PaceConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceConverterView.swift; sourceTree = "<group>"; };
-		7A001013 /* RunCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorView.swift; sourceTree = "<group>"; };
-		7A001015 /* RaceSplitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceSplitsView.swift; sourceTree = "<group>"; };
-		7A001020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A000FFD /* PaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5F1A0024B8F1C000E2D8A1 /* PaceCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculatorApp.swift; sourceTree = "<group>"; };
+		3B5F1A0224B8F1C000E2D8A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3B5F1A0F24B8F1D000E2D8A3 /* PaceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculator.swift; sourceTree = "<group>"; };
+		3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceConverterView.swift; sourceTree = "<group>"; };
+		3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorView.swift; sourceTree = "<group>"; };
+		3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceSplitsView.swift; sourceTree = "<group>"; };
+		3B5F1A2024B8F1E000E2D8A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B5F19FD24B8F1B000E2D8A0 /* PaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7A000FFA /* Frameworks */ = {
+		3B5F19FA24B8F1A000E2D8B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,48 +37,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A000FF4 = {
+		3B5F19F424B8F1A000E2D8B2 = {
 			isa = PBXGroup;
 			children = (
-				7A000FF9 /* PaceCalculator */,
-				7A000FFE /* Products */,
+				3B5F19F924B8F1A000E2D8B3 /* PaceCalculator */,
+				3B5F19FE24B8F1B000E2D8B4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7A000FF9 /* PaceCalculator */ = {
+		3B5F19F924B8F1A000E2D8B3 /* PaceCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				7A001000 /* PaceCalculatorApp.swift */,
-				7A001002 /* ContentView.swift */,
-				7A00100E /* Models */,
-				7A001017 /* Views */,
-				7A001020 /* Info.plist */,
+				3B5F1A0024B8F1C000E2D8A1 /* PaceCalculatorApp.swift */,
+				3B5F1A0224B8F1C000E2D8A2 /* ContentView.swift */,
+				3B5F1A0E24B8F1D000E2D8B5 /* Models */,
+				3B5F1A1724B8F1D000E2D8B6 /* Views */,
+				3B5F1A2024B8F1E000E2D8A7 /* Info.plist */,
 			);
 			path = PaceCalculator;
 			sourceTree = "<group>";
 		};
-		7A00100E /* Models */ = {
+		3B5F1A0E24B8F1D000E2D8B5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7A00100F /* PaceCalculator.swift */,
+				3B5F1A0F24B8F1D000E2D8A3 /* PaceCalculator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7A001017 /* Views */ = {
+		3B5F1A1724B8F1D000E2D8B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7A001011 /* PaceConverterView.swift */,
-				7A001013 /* RunCalculatorView.swift */,
-				7A001015 /* RaceSplitsView.swift */,
+				3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */,
+				3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */,
+				3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7A000FFE /* Products */ = {
+		3B5F19FE24B8F1B000E2D8B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A000FFD /* PaceCalculator.app */,
+				3B5F19FD24B8F1B000E2D8A0 /* PaceCalculator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,13 +86,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7A000FFC /* PaceCalculator */ = {
+		3B5F19FC24B8F1B000E2D8C1 /* PaceCalculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A00101B /* Build configuration list for PBXNativeTarget "PaceCalculator" */;
+			buildConfigurationList = 3B5F1A1B24B8F1E000E2D8C2 /* Build configuration list for PBXNativeTarget "PaceCalculator" */;
 			buildPhases = (
-				7A000FF8 /* Sources */,
-				7A000FFA /* Frameworks */,
-				7A000FFB /* Resources */,
+				3B5F19F824B8F1A000E2D8C3 /* Sources */,
+				3B5F19FA24B8F1A000E2D8B1 /* Frameworks */,
+				3B5F19FB24B8F1A000E2D8C4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -100,25 +100,25 @@
 			);
 			name = PaceCalculator;
 			productName = PaceCalculator;
-			productReference = 7A000FFD /* PaceCalculator.app */;
+			productReference = 3B5F19FD24B8F1B000E2D8A0 /* PaceCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7A000FF5 /* Project object */ = {
+		3B5F19F524B8F1A000E2D8C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					7A000FFC = {
+					3B5F19FC24B8F1B000E2D8C1 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 7A000FF8 /* Build configuration list for PBXProject "PaceCalculator" */;
+			buildConfigurationList = 3B5F19F824B8F1A000E2D8C6 /* Build configuration list for PBXProject "PaceCalculator" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,18 +126,18 @@
 				en,
 				Base,
 			);
-			mainGroup = 7A000FF4;
-			productRefGroup = 7A000FFE /* Products */;
+			mainGroup = 3B5F19F424B8F1A000E2D8B2;
+			productRefGroup = 3B5F19FE24B8F1B000E2D8B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7A000FFC /* PaceCalculator */,
+				3B5F19FC24B8F1B000E2D8C1 /* PaceCalculator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7A000FFB /* Resources */ = {
+		3B5F19FB24B8F1A000E2D8C4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -147,23 +147,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7A000FF8 /* Sources */ = {
+		3B5F19F824B8F1A000E2D8C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A001003 /* ContentView.swift in Sources */,
-				7A001001 /* PaceCalculatorApp.swift in Sources */,
-				7A001010 /* PaceCalculator.swift in Sources */,
-				7A001012 /* PaceConverterView.swift in Sources */,
-				7A001014 /* RunCalculatorView.swift in Sources */,
-				7A001016 /* RaceSplitsView.swift in Sources */,
+				3B5F1A0324B8F1C000E2D8A2 /* ContentView.swift in Sources */,
+				3B5F1A0124B8F1C000E2D8A1 /* PaceCalculatorApp.swift in Sources */,
+				3B5F1A1024B8F1D000E2D8A3 /* PaceCalculator.swift in Sources */,
+				3B5F1A1224B8F1D000E2D8A4 /* PaceConverterView.swift in Sources */,
+				3B5F1A1424B8F1D000E2D8A5 /* RunCalculatorView.swift in Sources */,
+				3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		7A001019 /* Debug */ = {
+		3B5F1A1924B8F1E000E2D8D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		7A00101A /* Release */ = {
+		3B5F1A1A24B8F1E000E2D8D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +282,7 @@
 			};
 			name = Release;
 		};
-		7A00101C /* Debug */ = {
+		3B5F1A1C24B8F1E000E2D8D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -313,7 +313,7 @@
 			};
 			name = Debug;
 		};
-		7A00101D /* Release */ = {
+		3B5F1A1D24B8F1E000E2D8D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -347,25 +347,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7A000FF8 /* Build configuration list for PBXProject "PaceCalculator" */ = {
+		3B5F19F824B8F1A000E2D8C6 /* Build configuration list for PBXProject "PaceCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7A001019 /* Debug */,
-				7A00101A /* Release */,
+				3B5F1A1924B8F1E000E2D8D1 /* Debug */,
+				3B5F1A1A24B8F1E000E2D8D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A00101B /* Build configuration list for PBXNativeTarget "PaceCalculator" */ = {
+		3B5F1A1B24B8F1E000E2D8C2 /* Build configuration list for PBXNativeTarget "PaceCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7A00101C /* Debug */,
-				7A00101D /* Release */,
+				3B5F1A1C24B8F1E000E2D8D3 /* Debug */,
+				3B5F1A1D24B8F1E000E2D8D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7A000FF5 /* Project object */;
+	rootObject = 3B5F19F524B8F1A000E2D8C5 /* Project object */;
 }
