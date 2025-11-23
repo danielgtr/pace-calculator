@@ -24,6 +24,7 @@ struct PaceConverterView: View {
     @State private var speedKmh: Double = 12.0
 
     @State private var result: PaceCalculator.PaceConversion?
+    @FocusState private var isSpeedFieldFocused: Bool
 
     var body: some View {
         NavigationView {
@@ -107,6 +108,7 @@ struct PaceConverterView: View {
                                     .textFieldStyle(.roundedBorder)
                                     .font(.system(size: 48, weight: .bold))
                                     .multilineTextAlignment(.center)
+                                    .focused($isSpeedFieldFocused)
 
                                 Text("km/h")
                                     .font(.title2)
@@ -206,6 +208,9 @@ struct PaceConverterView: View {
     }
 
     private func convert() {
+        // Dismiss keyboard
+        isSpeedFieldFocused = false
+
         withAnimation(.spring(response: 0.3)) {
             if conversionMode == .pace {
                 result = PaceCalculator.convertPace(

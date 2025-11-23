@@ -16,6 +16,7 @@ struct GoalTimeView: View {
     @State private var paceUnit: PaceUnit = .minPerKm
     @State private var result: PaceCalculator.GoalTimeCalculation?
     @State private var showingPresets = false
+    @FocusState private var isDistanceFieldFocused: Bool
 
     var body: some View {
         NavigationView {
@@ -53,6 +54,7 @@ struct GoalTimeView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .font(.title3)
                                 .multilineTextAlignment(.center)
+                                .focused($isDistanceFieldFocused)
 
                             Picker("Unidad de distancia", selection: $distanceUnit) {
                                 Text("km").tag(DistanceUnit.km)
@@ -277,6 +279,9 @@ struct GoalTimeView: View {
     }
 
     private func calculate() {
+        // Dismiss keyboard
+        isDistanceFieldFocused = false
+
         withAnimation(.spring(response: 0.3)) {
             result = PaceCalculator.calculatePaceFromGoalTime(
                 distance: distance,
