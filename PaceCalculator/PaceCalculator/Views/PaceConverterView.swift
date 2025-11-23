@@ -162,42 +162,46 @@ struct PaceConverterView: View {
                                 .font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                            // Pace Display - show in selected unit first
+                            // Pace Display - show converted unit first (the opposite of input)
                             VStack(spacing: 12) {
-                                // Main result in selected unit
-                                VStack(spacing: 8) {
-                                    Text(selectedPaceUnit == .minPerKm ? "Pace min/km" : "Pace min/mi")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Text(result.pace)
-                                        .font(.system(size: 42, weight: .bold))
-                                        .foregroundColor(Color(red: 0.4, green: 0.5, blue: 0.9))
-                                    Text(selectedPaceUnit.displayName)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color(red: 0.4, green: 0.5, blue: 0.9).opacity(0.1))
-                                .cornerRadius(12)
-
-                                // Other unit result
+                                // Main result in OTHER unit (converted)
                                 Group {
-                                    let otherUnitSeconds = selectedPaceUnit == .minPerKm ?
+                                    let convertedUnitSeconds = selectedPaceUnit == .minPerKm ?
                                         result.paceSeconds * PaceCalculator.mileToKm :
                                         result.paceSeconds * PaceCalculator.kmToMile
 
-                                    let otherUnitLabel = selectedPaceUnit == .minPerKm ?
-                                        strings.pacePerMile :
+                                    let convertedUnitLabel = selectedPaceUnit == .minPerKm ?
+                                        "Pace min/mi" :
                                         "Pace min/km"
 
-                                    let otherUnitTime = PaceCalculator.secondsToTime(otherUnitSeconds)
+                                    let convertedUnitDisplayName = selectedPaceUnit == .minPerKm ?
+                                        "min/mi" :
+                                        "min/km"
 
-                                    ResultRow(
-                                        label: otherUnitLabel,
-                                        value: PaceCalculator.formatTime(minutes: otherUnitTime.minutes, seconds: otherUnitTime.seconds)
-                                    )
+                                    let convertedTime = PaceCalculator.secondsToTime(convertedUnitSeconds)
+
+                                    VStack(spacing: 8) {
+                                        Text(convertedUnitLabel)
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                        Text(PaceCalculator.formatTime(minutes: convertedTime.minutes, seconds: convertedTime.seconds))
+                                            .font(.system(size: 42, weight: .bold))
+                                            .foregroundColor(Color(red: 0.4, green: 0.5, blue: 0.9))
+                                        Text(convertedUnitDisplayName)
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color(red: 0.4, green: 0.5, blue: 0.9).opacity(0.1))
+                                    .cornerRadius(12)
                                 }
+
+                                // Input unit (what they entered) as a row
+                                ResultRow(
+                                    label: selectedPaceUnit == .minPerKm ? "Pace min/km" : strings.pacePerMile,
+                                    value: result.pace
+                                )
                             }
 
                             ResultRow(
