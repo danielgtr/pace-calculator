@@ -23,6 +23,7 @@ struct RaceSplitsView: View {
     @State private var paceUnit: PaceUnit
     @State private var splits: [PaceCalculator.Split] = []
     @State private var showingIntervalOptions = false
+    @FocusState private var isIntervalFieldFocused: Bool
     @Environment(\.dismiss) var dismiss
 
     init(distance: Double, distanceUnit: DistanceUnit, paceMinutes: Int, paceSeconds: Int, paceUnit: PaceUnit) {
@@ -86,6 +87,7 @@ struct RaceSplitsView: View {
                                 .font(.title3)
                                 .multilineTextAlignment(.center)
                                 .frame(width: 100)
+                                .focused($isIntervalFieldFocused)
 
                             Text(distanceUnit == .km ? "km" : "mi")
                                 .foregroundColor(.secondary)
@@ -189,6 +191,9 @@ struct RaceSplitsView: View {
     }
 
     private func calculateSplits() {
+        // Cerrar el teclado
+        isIntervalFieldFocused = false
+
         withAnimation(.spring(response: 0.3)) {
             splits = PaceCalculator.calculateSplits(
                 totalDistance: totalDistance,
