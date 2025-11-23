@@ -181,26 +181,23 @@ struct PaceConverterView: View {
                                 .background(Color(red: 0.4, green: 0.5, blue: 0.9).opacity(0.1))
                                 .cornerRadius(12)
 
-                                // Other unit calculation
-                                let otherUnitSeconds: Double
-                                let otherUnitLabel: String
+                                // Other unit result
+                                Group {
+                                    let otherUnitSeconds = selectedPaceUnit == .minPerKm ?
+                                        result.paceSeconds * PaceCalculator.mileToKm :
+                                        result.paceSeconds * PaceCalculator.kmToMile
 
-                                if selectedPaceUnit == .minPerKm {
-                                    // Selected min/km, show min/mi
-                                    otherUnitSeconds = result.paceSeconds * PaceCalculator.mileToKm
-                                    otherUnitLabel = strings.pacePerMile
-                                } else {
-                                    // Selected min/mi, show min/km
-                                    otherUnitSeconds = result.paceSeconds * PaceCalculator.kmToMile
-                                    otherUnitLabel = "Pace min/km"
+                                    let otherUnitLabel = selectedPaceUnit == .minPerKm ?
+                                        strings.pacePerMile :
+                                        "Pace min/km"
+
+                                    let otherUnitTime = PaceCalculator.secondsToTime(otherUnitSeconds)
+
+                                    ResultRow(
+                                        label: otherUnitLabel,
+                                        value: PaceCalculator.formatTime(minutes: otherUnitTime.minutes, seconds: otherUnitTime.seconds)
+                                    )
                                 }
-
-                                let otherUnitTime = PaceCalculator.secondsToTime(otherUnitSeconds)
-
-                                ResultRow(
-                                    label: otherUnitLabel,
-                                    value: PaceCalculator.formatTime(minutes: otherUnitTime.minutes, seconds: otherUnitTime.seconds)
-                                )
                             }
 
                             ResultRow(
