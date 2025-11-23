@@ -3,33 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		3B5F1A0124B8F1C000E2D8A1 /* PaceCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A0024B8F1C000E2D8A1 /* PaceCalculatorApp.swift */; };
-		3B5F1A0324B8F1C000E2D8A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A0224B8F1C000E2D8A2 /* ContentView.swift */; };
-		3B5F1A1024B8F1D000E2D8A3 /* PaceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A0F24B8F1D000E2D8A3 /* PaceCalculator.swift */; };
-		3B5F1A1224B8F1D000E2D8A4 /* PaceConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */; };
-		3B5F1A1424B8F1D000E2D8A5 /* RunCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */; };
-		3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */; };
-		3B5F1A1824B8F1D000E2D8A7 /* GoalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		3B5F19FD24B8F1B000E2D8A0 /* PaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B5F1A0024B8F1C000E2D8A1 /* PaceCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculatorApp.swift; sourceTree = "<group>"; };
-		3B5F1A0224B8F1C000E2D8A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3B5F1A0F24B8F1D000E2D8A3 /* PaceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculator.swift; sourceTree = "<group>"; };
-		3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceConverterView.swift; sourceTree = "<group>"; };
-		3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorView.swift; sourceTree = "<group>"; };
-		3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceSplitsView.swift; sourceTree = "<group>"; };
-		3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimeView.swift; sourceTree = "<group>"; };
-		3B5F1A2024B8F1E000E2D8A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC9E0752ED2935B00F7C912 /* pace_calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pace_calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7CC9E0772ED2935B00F7C912 /* pace_calculator */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = pace_calculator;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		3B5F19FA24B8F1A000E2D8B1 /* Frameworks */ = {
+		7CC9E0722ED2935B00F7C912 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,108 +29,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B5F19F424B8F1A000E2D8B2 = {
+		7CC9E06C2ED2935B00F7C912 = {
 			isa = PBXGroup;
 			children = (
-				3B5F19F924B8F1A000E2D8B3 /* PaceCalculator */,
-				3B5F19FE24B8F1B000E2D8B4 /* Products */,
+				7CC9E0772ED2935B00F7C912 /* pace_calculator */,
+				7CC9E0762ED2935B00F7C912 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3B5F19F924B8F1A000E2D8B3 /* PaceCalculator */ = {
+		7CC9E0762ED2935B00F7C912 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B5F1A0024B8F1C000E2D8A1 /* PaceCalculatorApp.swift */,
-				3B5F1A0224B8F1C000E2D8A2 /* ContentView.swift */,
-				3B5F1A0E24B8F1D000E2D8B5 /* Models */,
-				3B5F1A1724B8F1D000E2D8B6 /* Views */,
-				3B5F1A2024B8F1E000E2D8A7 /* Info.plist */,
-			);
-			path = PaceCalculator;
-			sourceTree = "<group>";
-		};
-		3B5F19FE24B8F1B000E2D8B4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3B5F19FD24B8F1B000E2D8A0 /* PaceCalculator.app */,
+				7CC9E0752ED2935B00F7C912 /* pace_calculator.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		3B5F1A0E24B8F1D000E2D8B5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3B5F1A0F24B8F1D000E2D8A3 /* PaceCalculator.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		3B5F1A1724B8F1D000E2D8B6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */,
-				3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */,
-				3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */,
-				3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B5F19FC24B8F1B000E2D8C1 /* PaceCalculator */ = {
+		7CC9E0742ED2935B00F7C912 /* pace_calculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B5F1A1B24B8F1E000E2D8C2 /* Build configuration list for PBXNativeTarget "PaceCalculator" */;
+			buildConfigurationList = 7CC9E0802ED2935C00F7C912 /* Build configuration list for PBXNativeTarget "pace_calculator" */;
 			buildPhases = (
-				3B5F19F824B8F1A000E2D8C3 /* Sources */,
-				3B5F19FA24B8F1A000E2D8B1 /* Frameworks */,
-				3B5F19FB24B8F1A000E2D8C4 /* Resources */,
+				7CC9E0712ED2935B00F7C912 /* Sources */,
+				7CC9E0722ED2935B00F7C912 /* Frameworks */,
+				7CC9E0732ED2935B00F7C912 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = PaceCalculator;
-			productName = PaceCalculator;
-			productReference = 3B5F19FD24B8F1B000E2D8A0 /* PaceCalculator.app */;
+			fileSystemSynchronizedGroups = (
+				7CC9E0772ED2935B00F7C912 /* pace_calculator */,
+			);
+			name = pace_calculator;
+			packageProductDependencies = (
+			);
+			productName = pace_calculator;
+			productReference = 7CC9E0752ED2935B00F7C912 /* pace_calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3B5F19F524B8F1A000E2D8C5 /* Project object */ = {
+		7CC9E06D2ED2935B00F7C912 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
-					3B5F19FC24B8F1B000E2D8C1 = {
-						CreatedOnToolsVersion = 15.0;
+					7CC9E0742ED2935B00F7C912 = {
+						CreatedOnToolsVersion = 26.1.1;
 					};
 				};
 			};
-			buildConfigurationList = 3B5F19F824B8F1A000E2D8C6 /* Build configuration list for PBXProject "PaceCalculator" */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = 7CC9E0702ED2935B00F7C912 /* Build configuration list for PBXProject "pace_calculator" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 3B5F19F424B8F1A000E2D8B2;
-			productRefGroup = 3B5F19FE24B8F1B000E2D8B4 /* Products */;
+			mainGroup = 7CC9E06C2ED2935B00F7C912;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7CC9E0762ED2935B00F7C912 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B5F19FC24B8F1B000E2D8C1 /* PaceCalculator */,
+				7CC9E0742ED2935B00F7C912 /* pace_calculator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3B5F19FB24B8F1A000E2D8C4 /* Resources */ = {
+		7CC9E0732ED2935B00F7C912 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -150,24 +115,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3B5F19F824B8F1A000E2D8C3 /* Sources */ = {
+		7CC9E0712ED2935B00F7C912 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B5F1A0324B8F1C000E2D8A2 /* ContentView.swift in Sources */,
-				3B5F1A0124B8F1C000E2D8A1 /* PaceCalculatorApp.swift in Sources */,
-				3B5F1A1024B8F1D000E2D8A3 /* PaceCalculator.swift in Sources */,
-				3B5F1A1224B8F1D000E2D8A4 /* PaceConverterView.swift in Sources */,
-				3B5F1A1424B8F1D000E2D8A5 /* RunCalculatorView.swift in Sources */,
-				3B5F1A1824B8F1D000E2D8A7 /* GoalTimeView.swift in Sources */,
-				3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		3B5F1A1924B8F1E000E2D8D1 /* Debug */ = {
+		7CC9E07E2ED2935C00F7C912 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -202,7 +160,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4UTYHPV7AM;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -220,19 +177,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		3B5F1A1A24B8F1E000E2D8D2 /* Release */ = {
+		7CC9E07F2ED2935C00F7C912 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -267,7 +223,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4UTYHPV7AM;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -279,72 +234,73 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		3B5F1A1C24B8F1E000E2D8D3 /* Debug */ = {
+		7CC9E0812ED2935C00F7C912 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = PaceCalculator/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.PaceCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = "daniel.gtr.pace-calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		3B5F1A1D24B8F1E000E2D8D4 /* Release */ = {
+		7CC9E0822ED2935C00F7C912 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = PaceCalculator/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.PaceCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = "daniel.gtr.pace-calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -353,25 +309,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B5F19F824B8F1A000E2D8C6 /* Build configuration list for PBXProject "PaceCalculator" */ = {
+		7CC9E0702ED2935B00F7C912 /* Build configuration list for PBXProject "pace_calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3B5F1A1924B8F1E000E2D8D1 /* Debug */,
-				3B5F1A1A24B8F1E000E2D8D2 /* Release */,
+				7CC9E07E2ED2935C00F7C912 /* Debug */,
+				7CC9E07F2ED2935C00F7C912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B5F1A1B24B8F1E000E2D8C2 /* Build configuration list for PBXNativeTarget "PaceCalculator" */ = {
+		7CC9E0802ED2935C00F7C912 /* Build configuration list for PBXNativeTarget "pace_calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3B5F1A1C24B8F1E000E2D8D3 /* Debug */,
-				3B5F1A1D24B8F1E000E2D8D4 /* Release */,
+				7CC9E0812ED2935C00F7C912 /* Debug */,
+				7CC9E0822ED2935C00F7C912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 3B5F19F524B8F1A000E2D8C5 /* Project object */;
+	rootObject = 7CC9E06D2ED2935B00F7C912 /* Project object */;
 }
