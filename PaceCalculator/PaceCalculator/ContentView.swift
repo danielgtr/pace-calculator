@@ -31,7 +31,7 @@ struct ContentView: View {
                     Label(strings.settings, systemImage: "gearshape")
                 }
         }
-        .accentColor(.purple)
+        .accentColor(Color(red: 0.4, green: 0.5, blue: 0.9))
     }
 }
 

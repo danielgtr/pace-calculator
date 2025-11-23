@@ -147,7 +147,7 @@ struct PaceConverterView: View {
                             .padding()
                             .background(
                                 LinearGradient(
-                                    colors: [Color.purple, Color.blue],
+                                    colors: [Color(red: 0.4, green: 0.5, blue: 0.9), Color(red: 0.5, green: 0.6, blue: 0.95)],
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 )
@@ -162,31 +162,44 @@ struct PaceConverterView: View {
                                 .font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                            // Pace Display
+                            // Pace Display - show in selected unit first
                             VStack(spacing: 12) {
+                                // Main result in selected unit
                                 VStack(spacing: 8) {
-                                    Text("Pace min/km")
+                                    Text(selectedPaceUnit == .minPerKm ? "Pace min/km" : "Pace min/mi")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                     Text(result.pace)
                                         .font(.system(size: 42, weight: .bold))
-                                        .foregroundColor(.purple)
-                                    Text("min/km")
+                                        .foregroundColor(Color(red: 0.4, green: 0.5, blue: 0.9))
+                                    Text(selectedPaceUnit.displayName)
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.purple.opacity(0.1))
+                                .background(Color(red: 0.4, green: 0.5, blue: 0.9).opacity(0.1))
                                 .cornerRadius(12)
 
-                                // Pace per mile (calculated from km)
-                                let pacePerMileSeconds = result.paceSeconds * PaceCalculator.mileToKm
-                                let pacePerMile = PaceCalculator.secondsToTime(pacePerMileSeconds)
+                                // Other unit calculation
+                                let otherUnitSeconds: Double
+                                let otherUnitLabel: String
+
+                                if selectedPaceUnit == .minPerKm {
+                                    // Selected min/km, show min/mi
+                                    otherUnitSeconds = result.paceSeconds * PaceCalculator.mileToKm
+                                    otherUnitLabel = strings.pacePerMile
+                                } else {
+                                    // Selected min/mi, show min/km
+                                    otherUnitSeconds = result.paceSeconds * PaceCalculator.kmToMile
+                                    otherUnitLabel = "Pace min/km"
+                                }
+
+                                let otherUnitTime = PaceCalculator.secondsToTime(otherUnitSeconds)
 
                                 ResultRow(
-                                    label: strings.pacePerMile,
-                                    value: PaceCalculator.formatTime(minutes: pacePerMile.minutes, seconds: pacePerMile.seconds)
+                                    label: otherUnitLabel,
+                                    value: PaceCalculator.formatTime(minutes: otherUnitTime.minutes, seconds: otherUnitTime.seconds)
                                 )
                             }
 
@@ -203,7 +216,7 @@ struct PaceConverterView: View {
                         .padding()
                         .background(
                             LinearGradient(
-                                colors: [Color.pink.opacity(0.3), Color.purple.opacity(0.3)],
+                                colors: [Color(red: 0.5, green: 0.6, blue: 0.95).opacity(0.3), Color(red: 0.4, green: 0.5, blue: 0.9).opacity(0.3)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             )
