@@ -239,25 +239,48 @@ struct PaceCalculator {
             pacePerKmSeconds = paceSecondsValue * kmToMile
         }
 
-        var splits: [Split] = []
-        var currentDistance: Double = 0
-        var cumulativeSeconds: Double = 0
+        // Collect all split distances (in km)
+        var splitDistances: Set<Double> = []
 
+        // Add regular interval splits
+        var currentDistance: Double = 0
         while currentDistance < totalDistanceKm {
             let remainingDistance = totalDistanceKm - currentDistance
             let segmentDistance = min(splitIntervalKm, remainingDistance)
-
             currentDistance += segmentDistance
+
+            // Round to avoid floating point precision issues
+            let roundedDistance = round(currentDistance * 10000) / 10000
+            splitDistances.insert(roundedDistance)
+        }
+
+        // Add halfway point (always included)
+        let halfwayKm = totalDistanceKm / 2.0
+        let roundedHalfway = round(halfwayKm * 10000) / 10000
+        splitDistances.insert(roundedHalfway)
+
+        // Sort all split distances
+        let sortedDistances = splitDistances.sorted()
+
+        // Calculate splits with cumulative times
+        var splits: [Split] = []
+        var cumulativeSeconds: Double = 0
+        var previousDistance: Double = 0
+
+        for distance in sortedDistances {
+            let segmentDistance = distance - previousDistance
             let segmentTime = segmentDistance * pacePerKmSeconds
             cumulativeSeconds += segmentTime
 
-            let displayDistance = distanceUnit == .km ? currentDistance : currentDistance * kmToMile
+            let displayDistance = distanceUnit == .km ? distance : distance * kmToMile
 
             splits.append(Split(
                 distance: displayDistance,
                 time: formatDuration(totalSeconds: segmentTime),
                 cumulativeTime: formatDuration(totalSeconds: cumulativeSeconds)
             ))
+
+            previousDistance = distance
         }
 
         return splits
