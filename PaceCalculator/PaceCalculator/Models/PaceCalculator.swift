@@ -208,6 +208,7 @@ struct PaceCalculator {
         let distance: Double
         let time: String
         let cumulativeTime: String
+        let label: String? // Optional label for special splits (e.g., "Halfway Point")
     }
 
     static func calculateSplits(totalDistance: Double, distanceUnit: DistanceUnit, splitInterval: Double, paceMinutes: Int, paceSeconds: Int, paceUnit: PaceUnit) -> [Split] {
@@ -274,10 +275,15 @@ struct PaceCalculator {
 
             let displayDistance = distanceUnit == .km ? distance : distance * kmToMile
 
+            // Check if this is the halfway point
+            let isHalfway = abs(distance - roundedHalfway) < 0.0001
+            let label = isHalfway ? "Halfway Point" : nil
+
             splits.append(Split(
                 distance: displayDistance,
                 time: formatDuration(totalSeconds: segmentTime),
-                cumulativeTime: formatDuration(totalSeconds: cumulativeSeconds)
+                cumulativeTime: formatDuration(totalSeconds: cumulativeSeconds),
+                label: label
             ))
 
             previousDistance = distance

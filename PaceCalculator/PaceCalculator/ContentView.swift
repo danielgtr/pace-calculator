@@ -12,12 +12,12 @@ struct ContentView: View {
         TabView {
             PaceConverterView()
                 .tabItem {
-                    Label("Convertidor", systemImage: "arrow.left.arrow.right")
+                    Label("Converter", systemImage: "arrow.left.arrow.right")
                 }
 
             GoalTimeView()
                 .tabItem {
-                    Label("Tiempo Meta", systemImage: "target")
+                    Label("Goal Time", systemImage: "target")
                 }
         }
         .accentColor(.purple)

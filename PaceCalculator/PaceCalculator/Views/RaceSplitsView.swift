@@ -52,16 +52,16 @@ struct RaceSplitsView: View {
                     Image(systemName: "info.circle.fill")
                         .foregroundColor(.blue)
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Splits de Carrera")
+                        Text("Race Splits")
                             .font(.caption)
                             .fontWeight(.semibold)
-                        Text("Intervalo automático: \(String(format: "%.0f", splitInterval)) \(distanceUnit.rawValue)")
+                        Text("Auto interval: \(String(format: "%.0f", splitInterval)) \(distanceUnit.rawValue)")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     }
                     Spacer()
                     Button(action: { showingIntervalOptions.toggle() }) {
-                        Text(showingIntervalOptions ? "Ocultar" : "Cambiar intervalo")
+                        Text(showingIntervalOptions ? "Hide" : "Change interval")
                             .font(.caption)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
@@ -76,12 +76,12 @@ struct RaceSplitsView: View {
                 // Interval Options (collapsible)
                 if showingIntervalOptions {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Intervalo de split")
+                        Text("Split interval")
                             .font(.headline)
                             .foregroundColor(.secondary)
 
                         HStack(spacing: 12) {
-                            TextField("Intervalo", value: $splitInterval, format: .number)
+                            TextField("Interval", value: $splitInterval, format: .number)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.title3)
@@ -95,12 +95,12 @@ struct RaceSplitsView: View {
                             Spacer()
                         }
 
-                        Text("Común: 1, 5, o 10 \(distanceUnit.rawValue)")
+                        Text("Common: 1, 5, or 10 \(distanceUnit.rawValue)")
                             .font(.caption)
                             .foregroundColor(.secondary)
 
                         Button(action: calculateSplits) {
-                            Text("Recalcular")
+                            Text("Recalculate")
                                 .font(.subheadline)
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
@@ -129,7 +129,7 @@ struct RaceSplitsView: View {
 
                         // Header
                         HStack {
-                            Text("Distancia")
+                            Text("Distance")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -137,7 +137,7 @@ struct RaceSplitsView: View {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .frame(width: 70, alignment: .center)
-                            Text("Acumulado")
+                            Text("Cumulative")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .frame(width: 90, alignment: .trailing)
@@ -150,10 +150,19 @@ struct RaceSplitsView: View {
                         // Splits List
                         ForEach(Array(splits.enumerated()), id: \.offset) { index, split in
                             HStack {
-                                Text(String(format: "%.1f %@",
-                                           split.distance,
-                                           distanceUnit == .km ? "km" : "mi"))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(String(format: "%.1f %@",
+                                               split.distance,
+                                               distanceUnit == .km ? "km" : "mi"))
+                                    if let label = split.label {
+                                        Text(label)
+                                            .font(.caption)
+                                            .foregroundColor(.orange)
+                                            .fontWeight(.semibold)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
                                 Text(split.time)
                                     .fontWeight(.medium)
                                     .frame(width: 70, alignment: .center)
@@ -182,7 +191,7 @@ struct RaceSplitsView: View {
             }
             .padding()
         }
-        .navigationTitle("Splits de Carrera")
+        .navigationTitle("Race Splits")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             // Calculate splits automatically when view appears

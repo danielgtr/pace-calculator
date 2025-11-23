@@ -26,7 +26,7 @@ struct GoalTimeView: View {
                     HStack {
                         Image(systemName: "target")
                             .foregroundColor(.green)
-                        Text("Calcula el pace necesario para tu tiempo meta")
+                        Text("Calculate the pace you need for your goal time")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -38,18 +38,18 @@ struct GoalTimeView: View {
                     // Distance Section
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {
-                            Text("Distancia")
+                            Text("Distance")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                             Spacer()
                             Button(action: { showingPresets.toggle() }) {
-                                Label("Carreras", systemImage: "list.bullet")
+                                Label("Races", systemImage: "list.bullet")
                                     .font(.subheadline)
                             }
                         }
 
                         HStack(spacing: 12) {
-                            TextField("Distancia", value: $distance, format: .number)
+                            TextField("Distance", value: $distance, format: .number)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.title3)
@@ -99,16 +99,16 @@ struct GoalTimeView: View {
 
                     // Goal Time Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Tiempo meta")
+                        Text("Goal Time")
                             .font(.headline)
                             .foregroundColor(.secondary)
 
                         HStack(spacing: 16) {
                             VStack {
-                                Text("Horas")
+                                Text("Hours")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Picker("Horas", selection: $hours) {
+                                Picker("Hours", selection: $hours) {
                                     ForEach(0..<24) { hour in
                                         Text("\(hour)").tag(hour)
                                     }
@@ -122,7 +122,7 @@ struct GoalTimeView: View {
                                 Text("Min")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Picker("Minutos", selection: $minutes) {
+                                Picker("Minutes", selection: $minutes) {
                                     ForEach(0..<60) { min in
                                         Text("\(min)").tag(min)
                                     }
@@ -133,10 +133,10 @@ struct GoalTimeView: View {
                             }
 
                             VStack {
-                                Text("Seg")
+                                Text("Sec")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Picker("Segundos", selection: $seconds) {
+                                Picker("Seconds", selection: $seconds) {
                                     ForEach(0..<60) { sec in
                                         Text("\(sec)").tag(sec)
                                     }
@@ -147,7 +147,7 @@ struct GoalTimeView: View {
                             }
                         }
 
-                        Text("Ejemplo: 3:59:59 para sub-4 maratón")
+                        Text("Example: 3:59:59 for sub-4 marathon")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -157,11 +157,11 @@ struct GoalTimeView: View {
 
                     // Pace Unit Selector
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Mostrar pace en")
+                        Text("Show pace in")
                             .font(.headline)
                             .foregroundColor(.secondary)
 
-                        Picker("Unidad de pace", selection: $paceUnit) {
+                        Picker("Pace unit", selection: $paceUnit) {
                             Text("min/km").tag(PaceUnit.minPerKm)
                             Text("min/mi").tag(PaceUnit.minPerMile)
                         }
@@ -173,7 +173,7 @@ struct GoalTimeView: View {
 
                     // Calculate Button
                     Button(action: calculate) {
-                        Text("Calcular Pace")
+                        Text("Calculate Pace")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -191,7 +191,7 @@ struct GoalTimeView: View {
                     // Results Section
                     if let result = result {
                         VStack(spacing: 12) {
-                            Text("Pace necesario")
+                            Text("Required Pace")
                                 .font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -210,27 +210,27 @@ struct GoalTimeView: View {
                             .cornerRadius(12)
 
                             ResultRow(
-                                label: "Distancia",
+                                label: "Distance",
                                 value: String(format: "%.2f %@",
                                             distanceUnit == .km ? result.distanceKm : result.distanceMiles,
                                             distanceUnit.rawValue)
                             )
                             ResultRow(
-                                label: "Tiempo meta",
+                                label: "Goal Time",
                                 value: result.goalTime,
                                 highlighted: true
                             )
                             ResultRow(
-                                label: "Velocidad caminadora",
+                                label: "Treadmill Speed",
                                 value: String(format: "%.1f km/h", result.speedKmh),
                                 highlighted: true
                             )
                             ResultRow(
-                                label: "Velocidad (mph)",
+                                label: "Speed (mph)",
                                 value: String(format: "%.1f mph", result.speedMph)
                             )
 
-                            // Ver Splits Button
+                            // View Splits Button
                             NavigationLink(destination: RaceSplitsView(
                                 distance: distance,
                                 distanceUnit: distanceUnit,
@@ -240,7 +240,7 @@ struct GoalTimeView: View {
                             )) {
                                 HStack {
                                     Image(systemName: "list.number")
-                                    Text("Ver Splits de Carrera")
+                                    Text("View Race Splits")
                                         .fontWeight(.semibold)
                                 }
                                 .font(.subheadline)
@@ -273,7 +273,7 @@ struct GoalTimeView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Tiempo Meta → Pace")
+            .navigationTitle("Goal Time → Pace")
             .navigationBarTitleDisplayMode(.large)
         }
     }

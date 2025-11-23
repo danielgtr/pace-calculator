@@ -9,7 +9,7 @@ import SwiftUI
 
 enum ConversionMode: String, CaseIterable {
     case pace = "Pace"
-    case speed = "Velocidad"
+    case speed = "Speed"
 }
 
 struct PaceConverterView: View {
@@ -31,7 +31,7 @@ struct PaceConverterView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     // Mode Selector
-                    Picker("Modo", selection: $conversionMode) {
+                    Picker("Mode", selection: $conversionMode) {
                         ForEach(ConversionMode.allCases, id: \.self) { mode in
                             Text(mode.rawValue).tag(mode)
                         }
@@ -46,17 +46,17 @@ struct PaceConverterView: View {
                     if conversionMode == .pace {
                         // Pace Input Mode
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Introduce un pace")
+                            Text("Enter a pace")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
 
                             // Time Pickers
                             HStack(spacing: 16) {
                                 VStack {
-                                    Text("Minutos")
+                                    Text("Minutes")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
-                                    Picker("Minutos", selection: $minutes) {
+                                    Picker("Minutes", selection: $minutes) {
                                         ForEach(0..<60) { min in
                                             Text("\(min)").tag(min)
                                         }
@@ -67,10 +67,10 @@ struct PaceConverterView: View {
                                 }
 
                                 VStack {
-                                    Text("Segundos")
+                                    Text("Seconds")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
-                                    Picker("Segundos", selection: $seconds) {
+                                    Picker("Seconds", selection: $seconds) {
                                         ForEach(0..<60) { sec in
                                             Text("\(sec)").tag(sec)
                                         }
@@ -82,13 +82,13 @@ struct PaceConverterView: View {
                             }
 
                             // Pace Unit Picker
-                            Picker("Unidad de pace", selection: $selectedPaceUnit) {
+                            Picker("Pace unit", selection: $selectedPaceUnit) {
                                 Text("min/km").tag(PaceUnit.minPerKm)
                                 Text("min/mi").tag(PaceUnit.minPerMile)
                             }
                             .pickerStyle(.segmented)
 
-                            Text("El pace se mostrará en \(selectedPaceUnit.displayName)")
+                            Text("Pace will be shown in \(selectedPaceUnit.displayName)")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -98,12 +98,12 @@ struct PaceConverterView: View {
                     } else {
                         // Speed Input Mode
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Introduce velocidad")
+                            Text("Enter speed")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
 
                             HStack(spacing: 12) {
-                                TextField("Velocidad", value: $speedKmh, format: .number)
+                                TextField("Speed", value: $speedKmh, format: .number)
                                     .keyboardType(.decimalPad)
                                     .textFieldStyle(.roundedBorder)
                                     .font(.system(size: 48, weight: .bold))
@@ -115,7 +115,7 @@ struct PaceConverterView: View {
                                     .foregroundColor(.secondary)
                             }
 
-                            Text("Ejemplo: 12 km/h para pace de 5:00 min/km")
+                            Text("Example: 12 km/h for 5:00 min/km pace")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -126,7 +126,7 @@ struct PaceConverterView: View {
 
                     // Convert Button
                     Button(action: convert) {
-                        Text("Convertir")
+                        Text("Convert")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -144,7 +144,7 @@ struct PaceConverterView: View {
                     // Results Section
                     if let result = result {
                         VStack(spacing: 12) {
-                            Text("Resultados")
+                            Text("Results")
                                 .font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -171,18 +171,18 @@ struct PaceConverterView: View {
                                 let pacePerMile = PaceCalculator.secondsToTime(pacePerMileSeconds)
 
                                 ResultRow(
-                                    label: "Pace por milla",
+                                    label: "Pace per mile",
                                     value: PaceCalculator.formatTime(minutes: pacePerMile.minutes, seconds: pacePerMile.seconds)
                                 )
                             }
 
                             ResultRow(
-                                label: "Velocidad (km/h)",
+                                label: "Speed (km/h)",
                                 value: String(format: "%.1f km/h", result.speedKmh),
                                 highlighted: true
                             )
                             ResultRow(
-                                label: "Velocidad (mph)",
+                                label: "Speed (mph)",
                                 value: String(format: "%.1f mph", result.speedMph)
                             )
                         }
@@ -202,7 +202,7 @@ struct PaceConverterView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Convertidor de Pace")
+            .navigationTitle("Pace Converter")
             .navigationBarTitleDisplayMode(.large)
         }
     }
