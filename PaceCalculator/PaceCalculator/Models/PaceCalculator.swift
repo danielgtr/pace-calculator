@@ -70,6 +70,26 @@ struct PaceCalculator {
         )
     }
 
+    // MARK: - Speed to Pace Conversion
+
+    static func convertSpeedToPace(speedKmh: Double) -> PaceConversion {
+        // Calculate pace per km in seconds
+        let pacePerKmSeconds = 3600.0 / speedKmh
+        let pacePerMileSeconds = pacePerKmSeconds * mileToKm
+
+        let pacePerKm = secondsToTime(pacePerKmSeconds)
+        let pacePerMile = secondsToTime(pacePerMileSeconds)
+
+        let speedMph = speedKmh * kmToMile
+
+        return PaceConversion(
+            pace: formatTime(minutes: pacePerKm.minutes, seconds: pacePerKm.seconds),
+            paceSeconds: pacePerKmSeconds,
+            speedKmh: speedKmh,
+            speedMph: speedMph
+        )
+    }
+
     // MARK: - Run Calculation (Distance + Pace → Time)
 
     struct RunCalculation {

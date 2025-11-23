@@ -15,11 +15,6 @@ struct ContentView: View {
                     Label("Convertidor", systemImage: "arrow.left.arrow.right")
                 }
 
-            RunCalculatorView()
-                .tabItem {
-                    Label("Distancia", systemImage: "figure.run")
-                }
-
             GoalTimeView()
                 .tabItem {
                     Label("Tiempo Meta", systemImage: "target")
