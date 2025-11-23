@@ -17,7 +17,12 @@ struct ContentView: View {
 
             RunCalculatorView()
                 .tabItem {
-                    Label("Calculadora", systemImage: "figure.run")
+                    Label("Distancia", systemImage: "figure.run")
+                }
+
+            GoalTimeView()
+                .tabItem {
+                    Label("Tiempo Meta", systemImage: "target")
                 }
 
             RaceSplitsView()

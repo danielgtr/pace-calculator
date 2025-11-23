@@ -12,7 +12,7 @@ struct RunCalculatorView: View {
     @State private var distanceUnit: DistanceUnit = .km
     @State private var paceMinutes: Int = 5
     @State private var paceSeconds: Int = 0
-    @State private var paceUnit: DistanceUnit = .km
+    @State private var paceUnit: PaceUnit = .minPerKm
     @State private var result: PaceCalculator.RunCalculation?
     @State private var showingPresets = false
 
@@ -110,10 +110,14 @@ struct RunCalculatorView: View {
                         }
 
                         Picker("Unidad de pace", selection: $paceUnit) {
-                            Text("por km").tag(DistanceUnit.km)
-                            Text("por milla").tag(DistanceUnit.mile)
+                            Text("min/km").tag(PaceUnit.minPerKm)
+                            Text("min/mi").tag(PaceUnit.minPerMile)
                         }
                         .pickerStyle(.segmented)
+
+                        Text("Pace en \(paceUnit.displayName)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
                     .padding()
                     .background(Color(.systemGray6))
@@ -145,15 +149,19 @@ struct RunCalculatorView: View {
 
                             ResultRow(
                                 label: "Distancia",
-                                value: String(format: "%.1f km / %.1f mi", result.distanceKm, result.distanceMiles)
+                                value: String(format: "%.2f %@",
+                                            distanceUnit == .km ? result.distanceKm : result.distanceMiles,
+                                            distanceUnit.rawValue)
                             )
                             ResultRow(
                                 label: "Tiempo total",
                                 value: result.totalTime,
                                 highlighted: true
                             )
-                            ResultRow(label: "Pace por km", value: result.pacePerKm)
-                            ResultRow(label: "Pace por milla", value: result.pacePerMile)
+                            ResultRow(
+                                label: "Pace (\(paceUnit.displayName))",
+                                value: result.pace
+                            )
                             ResultRow(
                                 label: "Velocidad caminadora",
                                 value: String(format: "%.1f km/h", result.speedKmh),

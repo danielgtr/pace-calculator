@@ -13,6 +13,7 @@
 		3B5F1A1224B8F1D000E2D8A4 /* PaceConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */; };
 		3B5F1A1424B8F1D000E2D8A5 /* RunCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */; };
 		3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */; };
+		3B5F1A1824B8F1D000E2D8A7 /* GoalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceConverterView.swift; sourceTree = "<group>"; };
 		3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorView.swift; sourceTree = "<group>"; };
 		3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceSplitsView.swift; sourceTree = "<group>"; };
+		3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimeView.swift; sourceTree = "<group>"; };
 		3B5F1A2024B8F1E000E2D8A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B5F19FD24B8F1B000E2D8A0 /* PaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 			children = (
 				3B5F1A1124B8F1D000E2D8A4 /* PaceConverterView.swift */,
 				3B5F1A1324B8F1D000E2D8A5 /* RunCalculatorView.swift */,
+				3B5F1A1724B8F1D000E2D8A7 /* GoalTimeView.swift */,
 				3B5F1A1524B8F1D000E2D8A6 /* RaceSplitsView.swift */,
 			);
 			path = Views;
@@ -156,6 +159,7 @@
 				3B5F1A1024B8F1D000E2D8A3 /* PaceCalculator.swift in Sources */,
 				3B5F1A1224B8F1D000E2D8A4 /* PaceConverterView.swift in Sources */,
 				3B5F1A1424B8F1D000E2D8A5 /* RunCalculatorView.swift in Sources */,
+				3B5F1A1824B8F1D000E2D8A7 /* GoalTimeView.swift in Sources */,
 				3B5F1A1624B8F1D000E2D8A6 /* RaceSplitsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

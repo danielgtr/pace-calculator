@@ -41,55 +41,48 @@ struct PaceCalculator {
     // MARK: - Pace Conversion
 
     struct PaceConversion {
-        let pacePerKm: String
-        let pacePerMile: String
+        let pace: String  // Always in the selected pace unit
+        let paceSeconds: Double
         let speedKmh: Double
         let speedMph: Double
     }
 
-    static func convertPace(minutes: Int, seconds: Int, unit: DistanceUnit) -> PaceConversion {
+    static func convertPace(minutes: Int, seconds: Int, paceUnit: PaceUnit) -> PaceConversion {
         let paceSeconds = timeToSeconds(minutes: minutes, seconds: seconds)
 
         let pacePerKmSeconds: Double
-        let pacePerMileSeconds: Double
 
-        switch unit {
-        case .km:
+        switch paceUnit {
+        case .minPerKm:
             pacePerKmSeconds = paceSeconds
-            pacePerMileSeconds = paceSeconds * mileToKm
-        case .mile:
-            pacePerMileSeconds = paceSeconds
+        case .minPerMile:
             pacePerKmSeconds = paceSeconds * kmToMile
         }
 
-        let pacePerKm = secondsToTime(pacePerKmSeconds)
-        let pacePerMile = secondsToTime(pacePerMileSeconds)
-
         let speedKmh = 3600.0 / pacePerKmSeconds
-        let speedMph = 3600.0 / pacePerMileSeconds
+        let speedMph = speedKmh * kmToMile
 
         return PaceConversion(
-            pacePerKm: formatTime(minutes: pacePerKm.minutes, seconds: pacePerKm.seconds),
-            pacePerMile: formatTime(minutes: pacePerMile.minutes, seconds: pacePerMile.seconds),
+            pace: formatTime(minutes: minutes, seconds: seconds),
+            paceSeconds: paceSeconds,
             speedKmh: speedKmh,
             speedMph: speedMph
         )
     }
 
-    // MARK: - Run Calculation
+    // MARK: - Run Calculation (Distance + Pace → Time)
 
     struct RunCalculation {
         let distanceKm: Double
         let distanceMiles: Double
         let totalTime: String
         let totalSeconds: Double
-        let pacePerKm: String
-        let pacePerMile: String
+        let pace: String  // In the selected pace unit
         let speedKmh: Double
         let speedMph: Double
     }
 
-    static func calculateRun(distance: Double, distanceUnit: DistanceUnit, paceMinutes: Int, paceSeconds: Int, paceUnit: DistanceUnit) -> RunCalculation {
+    static func calculateRun(distance: Double, distanceUnit: DistanceUnit, paceMinutes: Int, paceSeconds: Int, paceUnit: PaceUnit) -> RunCalculation {
         let paceSecondsValue = timeToSeconds(minutes: paceMinutes, seconds: paceSeconds)
 
         // Convert distance to both units
@@ -107,31 +100,87 @@ struct PaceCalculator {
 
         // Calculate total time based on pace unit
         let totalSeconds: Double
+        let pacePerKmSeconds: Double
+
         switch paceUnit {
-        case .km:
+        case .minPerKm:
+            pacePerKmSeconds = paceSecondsValue
             totalSeconds = distanceKm * paceSecondsValue
-        case .mile:
+        case .minPerMile:
+            pacePerKmSeconds = paceSecondsValue * kmToMile
             totalSeconds = distanceMiles * paceSecondsValue
         }
 
-        // Calculate pace in both units
-        let pacePerKmSeconds = paceUnit == .km ? paceSecondsValue : paceSecondsValue * kmToMile
-        let pacePerMileSeconds = paceUnit == .mile ? paceSecondsValue : paceSecondsValue * mileToKm
-
-        let pacePerKm = secondsToTime(pacePerKmSeconds)
-        let pacePerMile = secondsToTime(pacePerMileSeconds)
-
         // Calculate speeds
         let speedKmh = 3600.0 / pacePerKmSeconds
-        let speedMph = 3600.0 / pacePerMileSeconds
+        let speedMph = speedKmh * kmToMile
 
         return RunCalculation(
             distanceKm: distanceKm,
             distanceMiles: distanceMiles,
             totalTime: formatDuration(totalSeconds: totalSeconds),
             totalSeconds: totalSeconds,
-            pacePerKm: formatTime(minutes: pacePerKm.minutes, seconds: pacePerKm.seconds),
-            pacePerMile: formatTime(minutes: pacePerMile.minutes, seconds: pacePerMile.seconds),
+            pace: formatTime(minutes: paceMinutes, seconds: paceSeconds),
+            speedKmh: speedKmh,
+            speedMph: speedMph
+        )
+    }
+
+    // MARK: - Goal Time Calculation (Distance + Time → Pace)
+
+    struct GoalTimeCalculation {
+        let distanceKm: Double
+        let distanceMiles: Double
+        let goalTime: String
+        let pace: String  // In the selected pace unit
+        let paceMinutes: Int
+        let paceSeconds: Int
+        let speedKmh: Double
+        let speedMph: Double
+    }
+
+    static func calculatePaceFromGoalTime(distance: Double, distanceUnit: DistanceUnit, hours: Int, minutes: Int, seconds: Int, paceUnit: PaceUnit) -> GoalTimeCalculation {
+        // Convert distance to both units
+        let distanceKm: Double
+        let distanceMiles: Double
+
+        switch distanceUnit {
+        case .km:
+            distanceKm = distance
+            distanceMiles = distance * kmToMile
+        case .mile:
+            distanceMiles = distance
+            distanceKm = distance * mileToKm
+        }
+
+        // Convert goal time to seconds
+        let goalTimeSeconds = Double(hours * 3600 + minutes * 60 + seconds)
+
+        // Calculate pace per km (always calculate this first)
+        let pacePerKmSeconds = goalTimeSeconds / distanceKm
+
+        // Calculate the pace in the requested unit
+        let paceInRequestedUnit: Double
+        switch paceUnit {
+        case .minPerKm:
+            paceInRequestedUnit = pacePerKmSeconds
+        case .minPerMile:
+            paceInRequestedUnit = pacePerKmSeconds * mileToKm
+        }
+
+        let paceTime = secondsToTime(paceInRequestedUnit)
+
+        // Calculate speeds
+        let speedKmh = 3600.0 / pacePerKmSeconds
+        let speedMph = speedKmh * kmToMile
+
+        return GoalTimeCalculation(
+            distanceKm: distanceKm,
+            distanceMiles: distanceMiles,
+            goalTime: formatDuration(totalSeconds: goalTimeSeconds),
+            pace: formatTime(minutes: paceTime.minutes, seconds: paceTime.seconds),
+            paceMinutes: paceTime.minutes,
+            paceSeconds: paceTime.seconds,
             speedKmh: speedKmh,
             speedMph: speedMph
         )
@@ -145,7 +194,7 @@ struct PaceCalculator {
         let cumulativeTime: String
     }
 
-    static func calculateSplits(totalDistance: Double, distanceUnit: DistanceUnit, splitInterval: Double, paceMinutes: Int, paceSeconds: Int, paceUnit: DistanceUnit) -> [Split] {
+    static func calculateSplits(totalDistance: Double, distanceUnit: DistanceUnit, splitInterval: Double, paceMinutes: Int, paceSeconds: Int, paceUnit: PaceUnit) -> [Split] {
         let paceSecondsValue = timeToSeconds(minutes: paceMinutes, seconds: paceSeconds)
 
         // Convert everything to km for consistency
@@ -168,9 +217,9 @@ struct PaceCalculator {
         }
 
         switch paceUnit {
-        case .km:
+        case .minPerKm:
             pacePerKmSeconds = paceSecondsValue
-        case .mile:
+        case .minPerMile:
             pacePerKmSeconds = paceSecondsValue * kmToMile
         }
 
@@ -212,6 +261,15 @@ enum DistanceUnit: String, CaseIterable {
         case .mile:
             return "Millas"
         }
+    }
+}
+
+enum PaceUnit: String, CaseIterable {
+    case minPerKm = "min/km"
+    case minPerMile = "min/mi"
+
+    var displayName: String {
+        return self.rawValue
     }
 }
 

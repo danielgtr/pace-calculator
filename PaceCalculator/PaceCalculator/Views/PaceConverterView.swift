@@ -10,7 +10,7 @@ import SwiftUI
 struct PaceConverterView: View {
     @State private var minutes: Int = 5
     @State private var seconds: Int = 30
-    @State private var selectedUnit: DistanceUnit = .km
+    @State private var selectedPaceUnit: PaceUnit = .minPerKm
     @State private var result: PaceCalculator.PaceConversion?
 
     var body: some View {
@@ -54,12 +54,16 @@ struct PaceConverterView: View {
                             }
                         }
 
-                        // Unit Picker
-                        Picker("Unidad", selection: $selectedUnit) {
-                            Text("por km").tag(DistanceUnit.km)
-                            Text("por milla").tag(DistanceUnit.mile)
+                        // Pace Unit Picker
+                        Picker("Unidad de pace", selection: $selectedPaceUnit) {
+                            Text("min/km").tag(PaceUnit.minPerKm)
+                            Text("min/mi").tag(PaceUnit.minPerMile)
                         }
                         .pickerStyle(.segmented)
+
+                        Text("El pace se mostrará en \(selectedPaceUnit.displayName)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
                     .padding()
                     .background(Color(.systemGray6))
@@ -85,12 +89,24 @@ struct PaceConverterView: View {
                     // Results Section
                     if let result = result {
                         VStack(spacing: 12) {
-                            Text("Conversiones")
+                            Text("Resultados")
                                 .font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                            ResultRow(label: "Pace por km", value: result.pacePerKm)
-                            ResultRow(label: "Pace por milla", value: result.pacePerMile)
+                            // Large Pace Display
+                            VStack(spacing: 8) {
+                                Text(result.pace)
+                                    .font(.system(size: 48, weight: .bold))
+                                    .foregroundColor(.purple)
+                                Text(selectedPaceUnit.displayName)
+                                    .font(.title3)
+                                    .foregroundColor(.secondary)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.purple.opacity(0.1))
+                            .cornerRadius(12)
+
                             ResultRow(
                                 label: "Velocidad (km/h)",
                                 value: String(format: "%.1f km/h", result.speedKmh),
@@ -124,7 +140,7 @@ struct PaceConverterView: View {
             result = PaceCalculator.convertPace(
                 minutes: minutes,
                 seconds: seconds,
-                unit: selectedUnit
+                paceUnit: selectedPaceUnit
             )
         }
     }

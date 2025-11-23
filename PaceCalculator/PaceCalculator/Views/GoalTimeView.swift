@@ -1,20 +1,20 @@
 //
-//  RaceSplitsView.swift
+//  GoalTimeView.swift
 //  PaceCalculator
 //
-//  View for calculating race splits
+//  View for calculating required pace from goal time
 //
 
 import SwiftUI
 
-struct RaceSplitsView: View {
-    @State private var totalDistance: Double = 21.0975
+struct GoalTimeView: View {
+    @State private var distance: Double = 42.195
     @State private var distanceUnit: DistanceUnit = .km
-    @State private var splitInterval: Double = 1.0
-    @State private var paceMinutes: Int = 5
-    @State private var paceSeconds: Int = 0
+    @State private var hours: Int = 3
+    @State private var minutes: Int = 59
+    @State private var seconds: Int = 59
     @State private var paceUnit: PaceUnit = .minPerKm
-    @State private var splits: [PaceCalculator.Split] = []
+    @State private var result: PaceCalculator.GoalTimeCalculation?
     @State private var showingPresets = false
 
     var body: some View {
@@ -23,38 +23,38 @@ struct RaceSplitsView: View {
                 VStack(spacing: 24) {
                     // Info Banner
                     HStack {
-                        Image(systemName: "info.circle.fill")
-                            .foregroundColor(.blue)
-                        Text("Calcula tus splits para carreras")
+                        Image(systemName: "target")
+                            .foregroundColor(.green)
+                        Text("Calcula el pace necesario para tu tiempo meta")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.blue.opacity(0.1))
+                    .background(Color.green.opacity(0.1))
                     .cornerRadius(12)
 
-                    // Total Distance Section
+                    // Distance Section
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {
-                            Text("Distancia total")
+                            Text("Distancia")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                             Spacer()
                             Button(action: { showingPresets.toggle() }) {
-                                Label("Carreras", systemImage: "flag.fill")
+                                Label("Carreras", systemImage: "list.bullet")
                                     .font(.subheadline)
                             }
                         }
 
                         HStack(spacing: 12) {
-                            TextField("Distancia", value: $totalDistance, format: .number)
+                            TextField("Distancia", value: $distance, format: .number)
                                 .keyboardType(.decimalPad)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.title3)
                                 .multilineTextAlignment(.center)
 
-                            Picker("Unidad", selection: $distanceUnit) {
+                            Picker("Unidad de distancia", selection: $distanceUnit) {
                                 Text("km").tag(DistanceUnit.km)
                                 Text("mi").tag(DistanceUnit.mile)
                             }
@@ -62,13 +62,13 @@ struct RaceSplitsView: View {
                             .frame(width: 120)
                         }
 
-                        // Race Presets
+                        // Preset Distance Pills
                         if showingPresets {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 8) {
                                     ForEach(CommonDistance.presets, id: \.name) { preset in
                                         Button(action: {
-                                            totalDistance = distanceUnit == .km ? preset.km : preset.miles
+                                            distance = distanceUnit == .km ? preset.km : preset.miles
                                         }) {
                                             VStack(spacing: 4) {
                                                 Text(preset.name)
@@ -82,7 +82,7 @@ struct RaceSplitsView: View {
                                             }
                                             .padding(.horizontal, 12)
                                             .padding(.vertical, 8)
-                                            .background(Color.purple.opacity(0.2))
+                                            .background(Color.green.opacity(0.2))
                                             .cornerRadius(12)
                                         }
                                     }
@@ -95,45 +95,33 @@ struct RaceSplitsView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
 
-                    // Split Interval Section
+                    // Goal Time Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Intervalo de split")
-                            .font(.headline)
-                            .foregroundColor(.secondary)
-
-                        HStack(spacing: 12) {
-                            TextField("Intervalo", value: $splitInterval, format: .number)
-                                .keyboardType(.decimalPad)
-                                .textFieldStyle(.roundedBorder)
-                                .font(.title3)
-                                .multilineTextAlignment(.center)
-
-                            Text(distanceUnit == .km ? "km" : "mi")
-                                .foregroundColor(.secondary)
-                                .frame(width: 40)
-                        }
-
-                        Text("Común: 1 km, 1 mi, o 5 km")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(16)
-
-                    // Pace Section
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Pace objetivo")
+                        Text("Tiempo meta")
                             .font(.headline)
                             .foregroundColor(.secondary)
 
                         HStack(spacing: 16) {
                             VStack {
+                                Text("Horas")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Picker("Horas", selection: $hours) {
+                                    ForEach(0..<24) { hour in
+                                        Text("\(hour)").tag(hour)
+                                    }
+                                }
+                                .pickerStyle(.wheel)
+                                .frame(height: 100)
+                                .clipped()
+                            }
+
+                            VStack {
                                 Text("Min")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Picker("Minutos", selection: $paceMinutes) {
-                                    ForEach(0..<30) { min in
+                                Picker("Minutos", selection: $minutes) {
+                                    ForEach(0..<60) { min in
                                         Text("\(min)").tag(min)
                                     }
                                 }
@@ -146,7 +134,7 @@ struct RaceSplitsView: View {
                                 Text("Seg")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Picker("Segundos", selection: $paceSeconds) {
+                                Picker("Segundos", selection: $seconds) {
                                     ForEach(0..<60) { sec in
                                         Text("\(sec)").tag(sec)
                                     }
@@ -157,13 +145,7 @@ struct RaceSplitsView: View {
                             }
                         }
 
-                        Picker("Unidad de pace", selection: $paceUnit) {
-                            Text("min/km").tag(PaceUnit.minPerKm)
-                            Text("min/mi").tag(PaceUnit.minPerMile)
-                        }
-                        .pickerStyle(.segmented)
-
-                        Text("Pace en \(paceUnit.displayName)")
+                        Text("Ejemplo: 3:59:59 para sub-4 maratón")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -171,16 +153,32 @@ struct RaceSplitsView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
 
+                    // Pace Unit Selector
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Mostrar pace en")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+
+                        Picker("Unidad de pace", selection: $paceUnit) {
+                            Text("min/km").tag(PaceUnit.minPerKm)
+                            Text("min/mi").tag(PaceUnit.minPerMile)
+                        }
+                        .pickerStyle(.segmented)
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(16)
+
                     // Calculate Button
-                    Button(action: calculateSplits) {
-                        Text("Calcular Splits")
+                    Button(action: calculate) {
+                        Text("Calcular Pace")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(
                                 LinearGradient(
-                                    colors: [Color.purple, Color.blue],
+                                    colors: [Color.green, Color.blue],
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 )
@@ -188,56 +186,52 @@ struct RaceSplitsView: View {
                             .cornerRadius(12)
                     }
 
-                    // Splits Results
-                    if !splits.isEmpty {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Splits de Carrera")
+                    // Results Section
+                    if let result = result {
+                        VStack(spacing: 12) {
+                            Text("Pace necesario")
                                 .font(.headline)
+                                .frame(maxWidth: .infinity, alignment: .leading)
 
-                            // Header
-                            HStack {
-                                Text("Distancia")
-                                    .font(.caption)
+                            // Large Pace Display
+                            VStack(spacing: 8) {
+                                Text(result.pace)
+                                    .font(.system(size: 48, weight: .bold))
+                                    .foregroundColor(.green)
+                                Text(paceUnit.displayName)
+                                    .font(.title3)
                                     .foregroundColor(.secondary)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("Split")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                    .frame(width: 70, alignment: .center)
-                                Text("Acumulado")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                    .frame(width: 90, alignment: .trailing)
                             }
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                            .background(Color(.systemGray5))
-                            .cornerRadius(8)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green.opacity(0.1))
+                            .cornerRadius(12)
 
-                            // Splits List
-                            ForEach(Array(splits.enumerated()), id: \.offset) { index, split in
-                                HStack {
-                                    Text(String(format: "%.1f %@",
-                                               split.distance,
-                                               distanceUnit == .km ? "km" : "mi"))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    Text(split.time)
-                                        .fontWeight(.medium)
-                                        .frame(width: 70, alignment: .center)
-                                    Text(split.cumulativeTime)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.purple)
-                                        .frame(width: 90, alignment: .trailing)
-                                }
-                                .padding()
-                                .background(index % 2 == 0 ? Color(.systemGray6) : Color(.systemBackground))
-                                .cornerRadius(8)
-                            }
+                            ResultRow(
+                                label: "Distancia",
+                                value: String(format: "%.2f %@",
+                                            distanceUnit == .km ? result.distanceKm : result.distanceMiles,
+                                            distanceUnit.rawValue)
+                            )
+                            ResultRow(
+                                label: "Tiempo meta",
+                                value: result.goalTime,
+                                highlighted: true
+                            )
+                            ResultRow(
+                                label: "Velocidad caminadora",
+                                value: String(format: "%.1f km/h", result.speedKmh),
+                                highlighted: true
+                            )
+                            ResultRow(
+                                label: "Velocidad (mph)",
+                                value: String(format: "%.1f mph", result.speedMph)
+                            )
                         }
                         .padding()
                         .background(
                             LinearGradient(
-                                colors: [Color.green.opacity(0.1), Color.blue.opacity(0.1)],
+                                colors: [Color.green.opacity(0.2), Color.blue.opacity(0.2)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             )
@@ -250,19 +244,19 @@ struct RaceSplitsView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Splits de Carrera")
+            .navigationTitle("Tiempo Meta → Pace")
             .navigationBarTitleDisplayMode(.large)
         }
     }
 
-    private func calculateSplits() {
+    private func calculate() {
         withAnimation(.spring(response: 0.3)) {
-            splits = PaceCalculator.calculateSplits(
-                totalDistance: totalDistance,
+            result = PaceCalculator.calculatePaceFromGoalTime(
+                distance: distance,
                 distanceUnit: distanceUnit,
-                splitInterval: splitInterval,
-                paceMinutes: paceMinutes,
-                paceSeconds: paceSeconds,
+                hours: hours,
+                minutes: minutes,
+                seconds: seconds,
                 paceUnit: paceUnit
             )
         }
@@ -270,5 +264,5 @@ struct RaceSplitsView: View {
 }
 
 #Preview {
-    RaceSplitsView()
+    GoalTimeView()
 }
