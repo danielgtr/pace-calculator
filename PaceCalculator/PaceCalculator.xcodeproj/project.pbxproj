@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A0000001 /* PaceCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000 /* PaceCalculatorApp.swift */; };
-		A0000003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000002 /* ContentView.swift */; };
-		A0000010 /* PaceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000F /* PaceCalculator.swift */; };
-		A0000012 /* PaceConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000011 /* PaceConverterView.swift */; };
-		A0000014 /* RunCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000013 /* RunCalculatorView.swift */; };
-		A0000016 /* RaceSplitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000015 /* RaceSplitsView.swift */; };
+		7A001001 /* PaceCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001000 /* PaceCalculatorApp.swift */; };
+		7A001003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001002 /* ContentView.swift */; };
+		7A001010 /* PaceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A00100F /* PaceCalculator.swift */; };
+		7A001012 /* PaceConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001011 /* PaceConverterView.swift */; };
+		7A001014 /* RunCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001013 /* RunCalculatorView.swift */; };
+		7A001016 /* RaceSplitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A001015 /* RaceSplitsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A0000000 /* PaceCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculatorApp.swift; sourceTree = "<group>"; };
-		A0000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A000000F /* PaceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculator.swift; sourceTree = "<group>"; };
-		A0000011 /* PaceConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceConverterView.swift; sourceTree = "<group>"; };
-		A0000013 /* RunCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorView.swift; sourceTree = "<group>"; };
-		A0000015 /* RaceSplitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceSplitsView.swift; sourceTree = "<group>"; };
-		A0000020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A000FFFD /* PaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A001000 /* PaceCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculatorApp.swift; sourceTree = "<group>"; };
+		7A001002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7A00100F /* PaceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceCalculator.swift; sourceTree = "<group>"; };
+		7A001011 /* PaceConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaceConverterView.swift; sourceTree = "<group>"; };
+		7A001013 /* RunCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorView.swift; sourceTree = "<group>"; };
+		7A001015 /* RaceSplitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceSplitsView.swift; sourceTree = "<group>"; };
+		7A001020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A000FFD /* PaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A000FFFA /* Frameworks */ = {
+		7A000FFA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,48 +37,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A000FFF4 = {
+		7A000FF4 = {
 			isa = PBXGroup;
 			children = (
-				A000FFF9 /* PaceCalculator */,
-				A000FFFE /* Products */,
+				7A000FF9 /* PaceCalculator */,
+				7A000FFE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A000FFF9 /* PaceCalculator */ = {
+		7A000FF9 /* PaceCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				A0000000 /* PaceCalculatorApp.swift */,
-				A0000002 /* ContentView.swift */,
-				A000000E /* Models */,
-				A0000017 /* Views */,
-				A0000020 /* Info.plist */,
+				7A001000 /* PaceCalculatorApp.swift */,
+				7A001002 /* ContentView.swift */,
+				7A00100E /* Models */,
+				7A001017 /* Views */,
+				7A001020 /* Info.plist */,
 			);
 			path = PaceCalculator;
 			sourceTree = "<group>";
 		};
-		A000000E /* Models */ = {
+		7A00100E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A000000F /* PaceCalculator.swift */,
+				7A00100F /* PaceCalculator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A0000017 /* Views */ = {
+		7A001017 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A0000011 /* PaceConverterView.swift */,
-				A0000013 /* RunCalculatorView.swift */,
-				A0000015 /* RaceSplitsView.swift */,
+				7A001011 /* PaceConverterView.swift */,
+				7A001013 /* RunCalculatorView.swift */,
+				7A001015 /* RaceSplitsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A000FFFE /* Products */ = {
+		7A000FFE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A000FFFD /* PaceCalculator.app */,
+				7A000FFD /* PaceCalculator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,13 +86,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A000FFFC /* PaceCalculator */ = {
+		7A000FFC /* PaceCalculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A000001B /* Build configuration list for PBXNativeTarget "PaceCalculator" */;
+			buildConfigurationList = 7A00101B /* Build configuration list for PBXNativeTarget "PaceCalculator" */;
 			buildPhases = (
-				A000FFF9 /* Sources */,
-				A000FFFA /* Frameworks */,
-				A000FFFB /* Resources */,
+				7A000FF8 /* Sources */,
+				7A000FFA /* Frameworks */,
+				7A000FFB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -100,25 +100,25 @@
 			);
 			name = PaceCalculator;
 			productName = PaceCalculator;
-			productReference = A000FFFD /* PaceCalculator.app */;
+			productReference = 7A000FFD /* PaceCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A000FFF5 /* Project object */ = {
+		7A000FF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A000FFFC = {
+					7A000FFC = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = A000FFF8 /* Build configuration list for PBXProject "PaceCalculator" */;
+			buildConfigurationList = 7A000FF8 /* Build configuration list for PBXProject "PaceCalculator" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,18 +126,18 @@
 				en,
 				Base,
 			);
-			mainGroup = A000FFF4;
-			productRefGroup = A000FFFE /* Products */;
+			mainGroup = 7A000FF4;
+			productRefGroup = 7A000FFE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A000FFFC /* PaceCalculator */,
+				7A000FFC /* PaceCalculator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A000FFFB /* Resources */ = {
+		7A000FFB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -147,23 +147,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A000FFF9 /* Sources */ = {
+		7A000FF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0000003 /* ContentView.swift in Sources */,
-				A0000001 /* PaceCalculatorApp.swift in Sources */,
-				A0000010 /* PaceCalculator.swift in Sources */,
-				A0000012 /* PaceConverterView.swift in Sources */,
-				A0000014 /* RunCalculatorView.swift in Sources */,
-				A0000016 /* RaceSplitsView.swift in Sources */,
+				7A001003 /* ContentView.swift in Sources */,
+				7A001001 /* PaceCalculatorApp.swift in Sources */,
+				7A001010 /* PaceCalculator.swift in Sources */,
+				7A001012 /* PaceConverterView.swift in Sources */,
+				7A001014 /* RunCalculatorView.swift in Sources */,
+				7A001016 /* RaceSplitsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A0000019 /* Debug */ = {
+		7A001019 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		A000001A /* Release */ = {
+		7A00101A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +282,7 @@
 			};
 			name = Release;
 		};
-		A000001C /* Debug */ = {
+		7A00101C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -313,7 +313,7 @@
 			};
 			name = Debug;
 		};
-		A000001D /* Release */ = {
+		7A00101D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -347,25 +347,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A000FFF8 /* Build configuration list for PBXProject "PaceCalculator" */ = {
+		7A000FF8 /* Build configuration list for PBXProject "PaceCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A0000019 /* Debug */,
-				A000001A /* Release */,
+				7A001019 /* Debug */,
+				7A00101A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A000001B /* Build configuration list for PBXNativeTarget "PaceCalculator" */ = {
+		7A00101B /* Build configuration list for PBXNativeTarget "PaceCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A000001C /* Debug */,
-				A000001D /* Release */,
+				7A00101C /* Debug */,
+				7A00101D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A000FFF5 /* Project object */;
+	rootObject = 7A000FF5 /* Project object */;
 }
